@@ -1,0 +1,9 @@
+
+INSTALLAZIONE apache2 e openssh
+$ apt-get install openssh-server
+$ apt-get install apache2
+//Modifica dell'indirizzo IP tramite file presente in /etc/netplan/....
+$ sudo nano /etc/netplan/*.yaml
+$ netplan apply
+$ apt-get install vsftpd  //installazione FTP
+$  sudo /etc/vsftp.conf //modificare il file di configurazione
