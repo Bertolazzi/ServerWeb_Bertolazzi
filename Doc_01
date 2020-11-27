@@ -7,3 +7,24 @@ $ sudo nano /etc/netplan/*.yaml
 $ netplan apply
 $ apt-get install vsftpd  //installazione FTP
 $  sudo /etc/vsftp.conf //modificare il file di configurazione
+#PROCEDIAMO CON LA CREAZIONE DI TRE UTENTI E DEI TRE SITI(sitoa,sitob,ubuntu-srv)
+$ sudo useradd -s /bin/bash -d /var/www/sitoa -m usersitoa  #creazione 
+$ cd /var/www/sitoa
+$ sudo nano index.html (html del sito a)
+# dopo aver creato il file html del sito, procediamo con la creazione del file di configurazione
+$ cd /etc/apache2/sites-avaiable    # all'interno della directory troveremo già un file di configurazione di default, copiamolo
+$ sudo cp *file di default.conf* sitoa.conf
+$ sudo nano sitoa.conf  
+# ALL'INTERNO DEL FILE DI CONFIGUARAZIONE
+---
+| #***************************
+| #***********************
+| ServerName sitoA-104.virtual.marconi  # TOGLIERE IL SIMBOLO DEL COMMENTO DAVANTI SERVERNAME ("#") cosa dovremo scrivere nella barra di ricerca
+| 
+| ServerAdmin webmaster@localhost
+| DocumentRoot /var/www/sitoA 
+|
+---
+#ATTIVAZIONE DEL FILE DI CONFIGURAZIONE
+$ sudo a2ensite sitoA.conf
+$ systemctl reload apache2  #per attivare il servizio ci chiederà di eseguire il comando indicato
